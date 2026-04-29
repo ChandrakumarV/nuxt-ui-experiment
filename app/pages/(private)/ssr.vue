@@ -1,7 +1,8 @@
 <template>
-  <h1 class="font-bold text-2xl mb-2">SSG</h1>
+  <h1 class="font-bold text-2xl mb-2">SSR</h1>
+  <div v-if="pending">Loading...</div>
 
-  <ul class="space-y-2">
+  <ul v-else class="space-y-2">
     <li
       v-for="item in data"
       :key="item.id"
@@ -13,18 +14,19 @@
 </template>
 
 <script setup lang="ts">
-const { data, status } = useFetch<{ id: number; title: string; body: string; userId: number }[]>(
-  'https://jsonplaceholder.typicode.com/posts?limit=10',
+const { data, pending } = useFetch<{ id: number; title: string; body: string; userId: number }[]>(
+  'https://jsonplaceholder.typicode.com/posts',
   {
-    lazy: true,
-    onRequest: () => {
+    onResponse: async () => {
       console.log(
         'SSR API called',
         import.meta.server ? 'Server' : import.meta.client ? 'Client' : '-'
       );
+      await new Promise((resolve) => setTimeout(resolve, 2000));
     }
   }
 );
+
 useHead({
   title: 'SSR'
 });

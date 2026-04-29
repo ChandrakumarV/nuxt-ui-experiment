@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 const { data } = useFetch<{ id: number; title: string; body: string; userId: number }[]>(
-  'https://jsonplaceholder.typicode.com/posts?limit=10',
+  'https://jsonplaceholder.typicode.com/posts',
   {
     lazy: true,
     onRequest: () => {

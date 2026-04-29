@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     '/ssr': { ssr: true },
     '/csr': { ssr: false },
     '/ssg': { prerender: true },
-    '/isr': { isr: 5 }
+    '/isr': { swr: 5 }
   },
   nitro: {
     storage: {
