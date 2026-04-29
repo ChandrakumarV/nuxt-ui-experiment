@@ -9,9 +9,20 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
+    '/ssr': { ssr: true },
+    '/csr': { ssr: false },
+    '/ssg': { prerender: true },
+    '/isr': { isr: 5 }
   },
-
+  nitro: {
+    storage: {
+      cache: {
+        driver: 'fs',
+        base: './.nitro/cache'
+      }
+    }
+  },
   compatibilityDate: '2025-01-15',
 
   eslint: {

@@ -7,7 +7,7 @@ useHead({
   }
 });
 
-const title = 'Nuxt Starter Template';
+const title = 'Nuxt JS';
 const description =
   'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.';
 
@@ -22,7 +22,9 @@ useSeoMeta({
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <UApp>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
